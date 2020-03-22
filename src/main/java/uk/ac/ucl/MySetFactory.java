@@ -69,7 +69,7 @@ public class MySetFactory
 
       default:
         throw new MySetException
-          ("Attempting to use BagFactory to create something that is not a Bag");
+          ("Attempting to use SetFactory to create something that is not a Set");
     }
   }
 }
