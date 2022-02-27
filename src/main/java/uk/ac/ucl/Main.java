@@ -44,7 +44,7 @@ public class Main
 
   public <T extends Comparable<T>> void print(MySet<T> set)
   {
-    printSet3(set);
+    printSet2(set);
     // The statement below will work when toString is overridden.
     // System.out.println(set);
   }
