@@ -52,15 +52,16 @@ public class Main
   public  <T extends Comparable<T>> void checkOperations(MySet<T> set1, MySet<T> set2) throws MySetException
   {
     System.out.print("Set1: ");
-    print(set1);
+    System.out.println(set1);
+    //print(set1);
     System.out.print("Set2: ");
-    print(set2);
+    System.out.println(set2);
     System.out.print("Union: ");
-    print(set1.union(set2));
+    System.out.println(set1.union(set2));
     System.out.print("Intersection: ");
-    print(set1.intersection(set2));
+    System.out.println(set1.intersection(set2));
     System.out.print("Difference: ");
-    print(set1.difference(set2));
+    System.out.println(set1.difference(set2));
   }
 
   public void checkIntSets()

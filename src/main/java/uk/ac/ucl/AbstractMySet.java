@@ -10,8 +10,7 @@ import java.util.ArrayList;
  * New set objects are created using a MySetFactory.
  */
 
-public abstract class AbstractMySet<T extends Comparable<T>> implements MySet<T>
-{
+public abstract class AbstractMySet<T extends Comparable<T>> implements MySet<T> {
   @Override
   public boolean equals(MySet<T> aSet)
   {
@@ -28,12 +27,29 @@ public abstract class AbstractMySet<T extends Comparable<T>> implements MySet<T>
   public List<T> toList()
   {
     // TODO write the code to return a List of the set contents.
+    // Ok
+
     return new ArrayList<>();
   }
 
   public MySet<T> union(MySet<T> mySet) throws MySetException
   {
     MySet<T> result = MySetFactory.getInstance().getMySet();
+    /*
+    this.forEach(x -> {
+      try {
+        result.add(x);
+      } catch (MySetException e) {
+        throw new RuntimeException(e);
+      }
+    });
+    */
+    for (T x : this){
+      result.add(x);
+    }
+    for (T x : mySet){
+      result.add(x);
+    }
 
     //TODO write the statements needed to find the union
 
@@ -44,6 +60,12 @@ public abstract class AbstractMySet<T extends Comparable<T>> implements MySet<T>
   {
     MySet<T> result = MySetFactory.getInstance().getMySet();
 
+    for (T x : this){
+      if(mySet.contains(x)){
+        result.add(x);
+      }
+    }
+
     // TODO write the statements needed to find the intersection.
 
     return result;
@@ -52,10 +74,27 @@ public abstract class AbstractMySet<T extends Comparable<T>> implements MySet<T>
   public MySet<T> difference(MySet<T> mySet) throws MySetException
   {
     MySet<T> result = MySetFactory.getInstance().getMySet();
-
+    for (T x : this){
+      if (!mySet.contains(x)){
+        result.add(x);
+      }
+    }
     // TODO write the statements needed to find the difference.
     return result;
   }
+
+  @Override
+  public String toString(){
+    StringBuilder output = new StringBuilder("{");
+    boolean first = true;
+    for (T value : this) {
+      if (!first) { output.append(", "); }
+      first = false;
+      output.append(value);
+    }
+    output.append("}");
+    return output.toString();
+  };
 
   protected void checkSize(int maximumSize)
     throws MySetException
